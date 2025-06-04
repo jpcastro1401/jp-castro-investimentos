@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consórcio Inteligente</title>
+  <meta name="description" content="Consórcio para realizar seus sonhos de forma planejada. Automóveis, imóveis, serviços e muito mais, sem juros e com as melhores condições.">
+  <meta name="keywords" content="consórcio, imóveis, automóveis, serviços, sem juros, planejamento financeiro">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Consórcio Inteligente" />
+  <meta property="og:description" content="Consórcio para realizar seus sonhos de forma planejada. Automóveis, imóveis, serviços e muito mais." />
+  <meta property="og:image" content="https://images.pexels.com/photos/4065133/pexels-photo-4065133.jpeg" />
+  <meta property="og:url" content="https://seu-dominio.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://seu-dominio.com",
+    "name": "Consórcio Inteligente",
+    "description": "Consórcio para realizar seus sonhos de forma planejada. Automóveis, imóveis, serviços e muito mais."
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://www.ademicon.com.br/wp-content/uploads/2023/09/favicon.png">
+
+  <!-- Fontes e Ícones -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" 
+        integrity="sha256-G2hpPC9qb5kz7cIJn8B2UoMNOBcW1JlHFs6XgCfVH+U=" crossorigin="anonymous" />
+
+  <style>
+    /* Reset e Configurações Básicas */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #000; /* Fundo preto */
+      color: #fff;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    a { color: #e63946; text-decoration: none; }
+
+    /* Header fixo com transição para recolher */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      height: 70px;
+      transition: top 0.3s ease;
+    }
+    .logo { font-size: 1.7rem; font-weight: 600; color: #e63946; }
+    nav {
+      /* Atribuindo função de navegação com ARIA */
+    }
+    nav ul.nav-links {
+      list-style: none;
+      display: flex;
+    }
+    nav ul.nav-links li {
+      margin-left: 30px;
+    }
+    nav ul.nav-links li a {
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul.nav-links li a:hover { color: #f0f; }
+
+    /* Hamburger - Oculto em telas grandes */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #e63946;
+      font-size: 1.5rem;
+    }
+
+    /* Seção Hero com efeito parallax (desativado em mobiles) */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 70px 30px 0;
+      background-image: url('https://images.pexels.com/photos/4065133/pexels-photo-4065133.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      color: #fff;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .hero * {
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      max-width: 700px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    .btn {
+      padding: 15px 40px;
+      background: #e63946;
+      color: #fff;
+      border-radius: 6px;
+      transition: background 0.3s;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .btn:hover { background: #d62828; }
+
+    /* Seções Gerais */
+    section {
+      padding: 80px 30px;
+      scroll-margin-top: 70px;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-align: center;
+      font-weight: 600;
+      color: #e63946;
+    }
+
+    /* Seção de Consórcios */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .feature {
+      flex: 1 1 300px;
+      max-width: 350px;
+      padding: 30px;
+      text-align: left;
+      border-radius: 8px;
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid #555;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+    .feature:hover { transform: translateY(-5px); }
+    .feature h3 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #e63946;
+      display: flex;
+      align-items: center;
+    }
+    .feature p { font-size: 1.1rem; color: #ccc; }
+    .feature i { margin-right: 10px; color: #e63946; }
+
+    /* Seção de Depoimentos */
+    #testimonials {
+      padding: 80px 30px;
+      scroll-margin-top: 70px;
+    }
+    #testimonials h2 { color: #e63946; text-align: center; margin-bottom: 40px; }
+    .testimonial-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .testimonial {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 350px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      font-style: italic;
+    }
+
+    /* Formulário de Contato */
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      margin-bottom: 20px;
+      padding: 14px;
+      border: 1px solid #555;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      font-size: 1rem;
+      color: #fff;
+    }
+    .contact-form button {
+      padding: 14px;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-weight: 500;
+    }
+    .contact-form button:hover { background: #d62828; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    /* Mobile: Menu Hamburger */
+    @media (max-width: 768px) {
+      nav ul.nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px 0;
+      }
+      nav.show ul.nav-links {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      /* Evitar parallax em dispositivos móveis */
+      .hero {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho com Navegação e Menu Hamburger -->
+  <header>
+    <div class="logo">Seu Consórcio Inteligente</div>
+    <nav id="navbar" role="navigation" aria-label="Main Navigation">
+      <ul class="nav-links">
+        <li><a href="#features">Consórcios</a></li>
+        <li><a href="#testimonials">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="Toggle Navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <main>
+    <!-- Seção Hero -->
+    <section class="hero" data-aos="fade-in">
+      <h1>Realize seus sonhos com um consórcio planejado</h1>
+      <p>Planeje a compra do seu imóvel, carro ou serviço de forma inteligente e sem juros.
+         Conte com nossa expertise para alcançar seus objetivos.</p>
+      <a href="#contato" class="btn">Fale Conosco</a>
+    </section>
+
+    <!-- Seção de Consórcios -->
+    <section id="features" class="features">
+      <h2 data-aos="fade-up">Nossos Consórcios</h2>
+      <div class="feature" data-aos="fade-up">
+        <h3><i class="fas fa-home"></i> Consórcio de Imóveis</h3>
+        <p>Adquira sua casa ou apartamento com parcelas acessíveis e sem juros. Planos flexíveis para realizar o sonho da casa própria.</p>
+      </div>
+      <div class="feature" data-aos="fade-up" data-aos-delay="100">
+        <h3><i class="fas fa-car"></i> Consórcio de Automóveis</h3>
+        <p>Troque de carro ou adquira seu primeiro veículo de forma planejada. As melhores opções de consórcio para você.</p>
+      </div>
+      <div class="feature" data-aos="fade-up" data-aos-delay="200">
+        <h3><i class="fas fa-handshake"></i> Consórcio de Serviços</h3>
+        <p>Planeje a realização de seus projetos e serviços com flexibilidade e economia. Conte com nossa expertise.</p>
+      </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section id="testimonials" data-aos="fade-up">
+      <h2>O que dizem nossos clientes</h2>
+      <div class="testimonial-container">
+        <div class="testimonial" data-aos="fade-up">
+          <p>"O consórcio mudou minha vida, consegui comprar minha casa dos sonhos sem juros exorbitantes." - Maria</p>
+        </div>
+        <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
+          <p>"Simples, transparente e eficiente. Recomendo para quem busca planejamento financeiro." - João</p>
+        </div>
+        <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
+          <p>"A equipe sempre me ajudou a entender todas as etapas do processo. Excelente serviço!" - Ana</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" data-aos="fade-up">
+      <h2>Entre em Contato</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Seu Nome" required>
+        <input type="tel" placeholder="Seu Telefone" required>
+        <input type="email" placeholder="Seu E-mail" required>
+        <button type="submit">Solicitar contato</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Seu Consórcio Inteligente. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Script para Recolher Cabeçalho ao Rolar a Página -->
+  <script>
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        // Rolar para baixo: esconde o cabeçalho
+        header.style.top = "-80px";
+      } else {
+        // Rolar para cima: mostra o cabeçalho
+        header.style.top = "0";
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  </script>
+
+  <!-- Script para Toggle do Menu Mobile -->
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', function() {
+      document.querySelector('nav').classList.toggle('show');
+    });
+  </script>
+
+  <!-- Script para o Formulário de Contato (Redireciona para o WhatsApp) -->
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const nome = this.querySelector('input[placeholder="Seu Nome"]').value;
+      const telefone = this.querySelector('input[placeholder="Seu Telefone"]').value;
+      const email = this.querySelector('input[placeholder="Seu E-mail"]').value;
+      
+      const mensagem = `Olá, tudo bem? Seguem meus dados e aguardo seu retorno:
+Nome: ${nome}
+Telefone: ${telefone}
+E-mail: ${email}`;
+      
+      const linkWhatsApp = "https://wa.me/5511940512670?text=" + encodeURIComponent(mensagem);
+      window.open(linkWhatsApp, '_blank');
+    });
+  </script>
+
+  <!-- AOS Animation Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" 
+          integrity="sha256-0Emj70ZYpb6OM1C6q+dzWvJ1uagemWXo06Z3o7TNvFk=" 
+          crossorigin="anonymous"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'slide'
+    });
+  </script>
+
+</body>
+</html>
