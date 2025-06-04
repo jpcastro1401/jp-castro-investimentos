@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JP CASTRO INVESTIMENTOS</title>
+  <!-- Importação da fonte Poppins do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset e configurações básicas */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', Arial, sans-serif; /* Fonte Poppins */
+      background: #000;
+      color: #fff;
+      line-height: 1.7; /* Aumenta o espaçamento entre linhas */
+      scroll-behavior: smooth;
+    }
+    a { color: #e63946; text-decoration: none; }
+
+    /* Header fixo */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px; /* Padding ajustado */
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: 70px;
+    }
+    .logo { font-size: 1.7rem; font-weight: 600; }
+    nav a {
+      margin-left: 30px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #f0f; }
+
+    /* Banner / Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 70px 30px 0; /* Padding-top igual à altura do header */
+      background-image: url('https://images.pexels.com/photos/4065133/pexels-photo-4065133.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+    .btn {
+      padding: 15px 40px;
+      background: #e63946;
+      color: #fff;
+      border-radius: 6px;
+      transition: background 0.3s;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .btn:hover { background: #d62828; }
+
+    /* Seções */
+    section { 
+      padding: 80px 30px;
+      scroll-margin-top: 70px;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Seção de funcionalidades / serviços */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .feature {
+      flex: 1 1 300px;
+      max-width: 350px;
+      padding: 30px;
+      text-align: left;
+      border-radius: 8px;
+      background-color: rgba(255,255,255,0.05);
+      transition: background-color 0.3s;
+    }
+    .feature:hover { background-color: rgba(255,255,255,0.1); }
+    .feature h3 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .feature p { font-size: 1.1rem; }
+
+    /* Formulário de contato */
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      margin-bottom: 20px;
+      padding: 14px;
+      border: 1px solid #555;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      padding: 14px;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-weight: 500;
+    }
+    .contact-form button:hover { background: #d62828; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+    }
+    footer p { font-size: 0.95rem; }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 15px;
+        height: 60px;
+      }
+      .logo { font-size: 1.4rem; }
+      nav a { margin-left: 15px; }
+      .hero {
+        padding: 60px 15px 0;
+        height: auto;
+        padding-bottom: 50px;
+      }
+      .hero h1 { font-size: 2.8rem; }
+      .hero p { font-size: 1.1rem; }
+      section { padding: 60px 15px; }
+      section h2 { font-size: 2.2rem; margin-bottom: 30px; }
+      .features { gap: 20px; }
+      .feature { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">JP CASTRO INVESTIMENTOS</div>
+    <nav>
+      <a href="#features">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Seção Hero -->
+    <section class="hero">
+      <h1>A realização do seu sonho começa aqui</h1>
+      <p>Não seja refém dos bancos, inicie um planejamento com estratégia para realizar seus sonhos sem pagar altos juros.</p>
+      <a href="#contato" class="btn">Fale Conosco</a>
+    </section>
+
+    <!-- Seção de Funcionalidades / Serviços -->
+    <section id="features" class="features">
+      <h2>Nossos Serviços</h2>
+      <div class="feature">
+        <h3>Planejamento Financeiro Personalizado</h3>
+        <p>Elaboramos um plano financeiro exclusivo para você, com metas claras e estratégias eficazes para alcançar seus objetivos.</p>
+      </div>
+      <div class="feature">
+        <h3>Consórcio Inteligente</h3>
+        <p>Encontre as melhores opções de consórcio para adquirir bens sem juros e com parcelas que cabem no seu bolso.</p>
+      </div>
+      <div class="feature">
+        <h3>Consultoria de Investimentos</h3>
+        <p>Conte com nossa expertise para investir seu dinheiro de forma segura e rentável, maximizando seus ganhos a longo prazo.</p>
+      </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato">
+      <h2>Fale Conosco</h2>
+      <!-- Formulário do HubSpot -->
+      <script src="https://js.hsforms.net/forms/embed/49378755.js" defer></script>
+      <div class="hs-form-frame" data-region="na1" data-form-id="f74fedf0-c3b5-4fcb-a9ff-cba67cf4ad85" data-portal-id="49378755"></div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 JP CASTRO INVESTIMENTOS. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
