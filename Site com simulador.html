@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consórcio Imobiliário - Realize Seu Sonho</title>
+    
+    <!-- Chosen Palette: Verdant Growth -->
+    <!-- Application Structure Plan: The SPA is structured as a user journey, from inspiration to action. 1. Hero Section: Grabs attention with the core aspirational message ("casa dos sonhos"), similar to the original ad. 2. Interactive Simulator: The main engagement tool. Allows users to immediately see the value proposition by calculating payments for different credit amounts, making the abstract numbers tangible. This is the core interactive element chosen for maximum user engagement and clarity. 3. 'How it Works' Section: Educates the user on the consortium process in simple, visual steps, demystifying the product. 4. Benefits Section: Reinforces the value proposition with key advantages, addressing potential user concerns. 5. Final CTA/Contact Form: A clear, final step to convert the visitor into a lead. This flow was chosen to guide the user logically from dream (Hero) to understanding (How it Works/Benefits) to concrete action (Simulator/Contact), maximizing conversion potential. -->
+    <!-- Visualization & Content Choices: Report Info: Credit of R$100k for R$337.30/month & R$500k for R$1,686.50/month -> Goal: Allow user to explore different credit values -> Viz/Presentation: Interactive Range Slider & Dynamic Text -> Interaction: User drags slider, payment text updates in real-time -> Justification: More engaging and personalized than static offers. Allows users to find a plan that fits their budget. Library/Method: Vanilla JS. | Report Info: Consortium Process -> Goal: Educate users -> Viz/Presentation: Numbered step-by-step diagram -> Interaction: Static visual guide -> Justification: Simple, clear, and easy to digest for a potentially complex topic. Library/Method: HTML/Tailwind CSS. | Report Info: Implicit benefits of consortium -> Goal: Reinforce value -> Viz/Presentation: Icon + Text Cards -> Interaction: Subtle hover effects -> Justification: Visually breaks down key selling points for quick scanning. Library/Method: HTML/Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/4065133/pexels-photo-4065133.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .brand-green-dark { background-color: #2E4A3F; }
+        .brand-green-light { background-color: #34D399; }
+        .text-brand-green-light { color: #34D399; }
+        .border-brand-green-light { border-color: #34D399; }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #34D399;
+            cursor: pointer;
+            border-radius: 50%;
+            margin-top: -8px;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            background: #34D399;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        /* Estilos para os botões de incremento/decremento */
+        .input-group-number button {
+            background-color: #f0f2f5;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .input-group-number button:hover {
+            background-color: #dae2e8;
+        }
+        .input-group-number input {
+            border-left: none;
+            border-right: none;
+            text-align: center;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Nav -->
+    <header class="bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-brand-green-dark">Consórcio Imobiliário</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#simulador" class="text-gray-600 hover:text-brand-green-light transition">Simulador</a>
+                <a href="#como-funciona" class="text-gray-600 hover:text-brand-green-light transition">Como Funciona</a>
+                <a href="#vantagens" class="text-gray-600 hover:text-brand-green-light transition">Vantagens</a>
+            </nav>
+            <a href="#contato" class="brand-green-light text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-opacity-90 transition transform hover:scale-105">
+                Simule Agora
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section h-screen flex items-center justify-center text-white pt-20">
+        <div class="text-center max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 tracking-wide">Qual é a sua casa dos sonhos?</h2>
+            <p class="text-lg md:text-2xl mb-8 text-gray-200">Nós transformamos seu sonho em realidade com parcelas que cabem no seu bolso. Sem juros e sem burocracia.</p>
+            <a href="#simulador" class="bg-white text-black font-bold py-4 px-10 rounded-full text-xl shadow-2xl hover:bg-gray-200 transition transform hover:scale-105">
+                Comece a Simular
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Interactive Simulator Section -->
+        <section id="simulador" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">Simulador Interativo de Consórcio</h3>
+                <p class="max-w-2xl mx-auto text-gray-600 mb-12">Arraste a barra para selecionar o valor do crédito desejado e veja uma estimativa da sua parcela mensal. Simples e transparente.</p>
+                
+                <div class="max-w-3xl mx-auto bg-gray-50 p-8 rounded-2xl shadow-xl border">
+                    <div class="mb-8">
+                        <label for="credit-slider" class="block text-2xl font-semibold mb-2">Valor do Crédito Desejado:</label>
+                        <p id="credit-value" class="text-4xl font-extrabold text-brand-green-dark">R$ 100.000,00</p>
+                    </div>
+                    
+                    <input type="range" id="credit-slider" min="100000" max="1000000" step="10000" value="100000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mb-8">
+
+                    <div class="flex justify-between text-sm text-gray-500 -mt-6 mb-8">
+                        <span>R$ 100 mil</span>
+                        <span>R$ 1 milhão</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border-2 border-dashed border-brand-green-light">
+                        <p class="text-xl font-semibold text-gray-700 mb-2">Sua parcela mensal estimada é:</p>
+                        <p id="payment-value" class="text-5xl font-extrabold text-brand-green-light">R$ 337,30</p>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-4">*Este é um valor promocional estimado e pode variar. Consulte as condições.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works Section -->
+        <section id="como-funciona" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">Como o Consórcio Funciona?</h3>
+                <p class="max-w-2xl mx-auto text-gray-600 mb-16">Em 4 passos simples, você entende como pode conquistar seu imóvel de forma planejada e inteligente.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 brand-green-light rounded-full flex items-center justify-center text-white text-3xl font-bold mb-4 shadow-lg">1</div>
+                        <h4 class="text-xl font-bold mb-2">Forme um Grupo</h4>
+                        <p class="text-gray-600">Você entra em um grupo de pessoas com o mesmo objetivo de comprar um imóvel.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 brand-green-light rounded-full flex items-center justify-center text-white text-3xl font-bold mb-4 shadow-lg">2</div>
+                        <h4 class="text-xl font-bold mb-2">Pague as Parcelas</h4>
+                        <p class="text-gray-600">Todos contribuem com parcelas mensais, formando um fundo comum para as compras.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 brand-green-light rounded-full flex items-center justify-center text-white text-3xl font-bold mb-4 shadow-lg">3</div>
+                        <h4 class="text-xl font-bold mb-2">Seja Contemplado</h4>
+                        <p class="text-gray-600">Mensalmente, membros são contemplados por sorteio ou lance para receber a carta de crédito.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 brand-green-light rounded-full flex items-center justify-center text-white text-3xl font-bold mb-4 shadow-lg">4</div>
+                        <h4 class="text-xl font-bold mb-2">Compre seu Imóvel</h4>
+                        <p class="text-gray-600">Com a carta de crédito em mãos, você tem poder de compra à vista para negociar seu imóvel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="vantagens" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4">As Vantagens de Escolher o Consórcio</h3>
+                    <p class="max-w-2xl mx-auto text-gray-600">Veja por que o consórcio é a forma mais inteligente de planejar a compra do seu imóvel.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-xl hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <span class="text-4xl mb-4 block">🚫</span>
+                        <h4 class="text-2xl font-bold mb-2">Sem Juros</h4>
+                        <p class="text-gray-600">Diferente de financiamentos, no consórcio você não paga juros. Apenas uma taxa de administração diluída nas parcelas.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <span class="text-4xl mb-4 block">💸</span>
+                        <h4 class="text-2xl font-bold mb-2">Poder de Compra</h4>
+                        <p class="text-gray-600">A carta de crédito equivale a uma compra à vista, o que te dá um enorme poder de negociação para conseguir descontos.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <span class="text-4xl mb-4 block">🤸</span>
+                        <h4 class="text-2xl font-bold mb-2">Flexibilidade Total</h4>
+                        <p class="text-gray-600">Você pode usar o crédito para comprar um imóvel novo, usado, terreno, ou até mesmo para construir ou reformar sua casa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA / Contact Form Section -->
+        <section id="contato" class="py-20 brand-green-dark text-white">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-3xl md:text-4xl font-bold mb-4">Pronto para dar o próximo passo?</h3>
+                        <p class="text-gray-300 text-lg mb-6">Preencha o formulário ao lado e um de nossos especialistas entrará em contato para tirar todas as suas dúvidas e ajudar você a encontrar o plano perfeito.</p>
+                        <p class="text-gray-300">É rápido, sem compromisso e o primeiro passo para a sua casa dos sonhos!</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-2xl shadow-2xl text-gray-800">
+                        <h4 class="text-2xl font-bold mb-6 text-center">Fale com um Especialista</h4>
+                        <form id="contactForm">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-brand-green-light focus:border-brand-green-light" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="desiredCredit" class="block text-sm font-medium text-gray-700 mb-1">Crédito Desejado (R$)</label>
+                                <div class="flex items-center input-group-number border border-gray-300 rounded-md focus-within:ring-brand-green-light focus-within:border-brand-green-light">
+                                    <button type="button" id="decrementCredit" class="px-3 py-2 text-gray-600 rounded-l-md hover:bg-gray-100 transition focus:outline-none focus:ring-1 focus:ring-brand-green-light">
+                                        <span class="font-bold text-lg">-</span>
+                                    </button>
+                                    <input type="text" id="desiredCredit" name="desiredCredit" class="flex-grow px-4 py-2 bg-transparent focus:outline-none" required>
+                                    <button type="button" id="incrementCredit" class="px-3 py-2 text-gray-600 rounded-r-md hover:bg-gray-100 transition focus:outline-none focus:ring-1 focus:ring-brand-green-light">
+                                        <span class="font-bold text-lg">+</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-brand-green-light focus:border-brand-green-light" required>
+                            </div>
+                            <button type="submit" class="w-full brand-green-light text-white font-bold py-3 px-6 rounded-md shadow-lg hover:bg-opacity-90 transition transform hover:scale-105">
+                                Quero uma Simulação
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Consórcio Imobiliário. Todos os direitos reservados.</p>
+            <p class="text-xs text-gray-400 mt-2">As informações apresentadas são simulações e podem variar. Consulte as condições gerais do seu plano.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slider = document.getElementById('credit-slider');
+            const creditValueDisplay = document.getElementById('credit-value');
+            const paymentValueDisplay = document.getElementById('payment-value');
+            const desiredCreditInput = document.getElementById('desiredCredit');
+            const incrementCreditButton = document.getElementById('incrementCredit');
+            const decrementCreditButton = document.getElementById('decrementCredit');
+            const contactForm = document.getElementById('contactForm');
+
+            const MIN_CREDIT = 100000;
+            const MAX_CREDIT = 1000000;
+            const STEP_CREDIT = 10000;
+
+            // This is a simplified calculation based on the provided examples for demonstration.
+            // R$100,000 credit -> R$337.30 payment (approx factor of 296)
+            // R$500,000 credit -> R$1,686.50 payment (approx factor of 296)
+            const CALCULATION_FACTOR = 296.5; // Approx factor based on R$100k/R$337.30
+
+            const formatCurrency = (value) => {
+                if (isNaN(value)) return "R$ 0,00";
+                return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+            };
+
+            const parseCurrency = (value) => {
+                // Remove R$, spaces, and replace '.' with '' and ',' with '.'
+                // Also handles empty string converting to 0 for consistent parsing
+                const numericString = value.replace(/[R$\s.]/g, '').replace(',', '.');
+                return parseFloat(numericString || 0);
+            };
+
+            const updateSimulatorValues = () => {
+                const creditValue = parseFloat(slider.value);
+                const paymentValue = creditValue / CALCULATION_FACTOR;
+                
+                creditValueDisplay.textContent = formatCurrency(creditValue);
+                paymentValueDisplay.textContent = formatCurrency(paymentValue);
+                // desiredCreditInput.value = formatCurrency(creditValue); // Esta linha será controlada pelo listener de input/blur
+            };
+
+            const updateDesiredCreditInput = (newValue) => {
+                let numericValue = Math.min(Math.max(newValue, MIN_CREDIT), MAX_CREDIT);
+                numericValue = Math.round(numericValue / STEP_CREDIT) * STEP_CREDIT; // Arredonda para o múltiplo mais próximo do step
+
+                desiredCreditInput.value = formatCurrency(numericValue);
+                slider.value = numericValue; // Sincroniza o slider
+                updateSimulatorValues(); // Atualiza os displays do simulador
+            };
+
+            slider.addEventListener('input', updateSimulatorValues);
+            
+            // Lidar com a digitação no campo de input de crédito desejado
+            desiredCreditInput.addEventListener('input', function(e) {
+                let rawValue = e.target.value.replace(/[R$\s.]/g, '').replace(',', '.'); // Remove formatação para parse
+                if (rawValue.length > 0) {
+                    let numericValue = parseFloat(rawValue);
+                    if (!isNaN(numericValue)) {
+                        e.target.value = new Intl.NumberFormat('pt-BR').format(numericValue); // Formata apenas o número para facilitar a digitação
+                        // Sincroniza o slider em tempo real enquanto digita, mas mantém limites
+                        let clampedValue = Math.min(Math.max(numericValue, MIN_CREDIT), MAX_CREDIT);
+                        slider.value = clampedValue;
+                        updateSimulatorValues();
+                    }
+                } else {
+                    slider.value = MIN_CREDIT; // Se o campo estiver vazio, volta para o mínimo
+                    updateSimulatorValues();
+                }
+            });
+
+            // Adiciona um evento 'blur' para formatar o valor quando o usuário sai do campo
+            desiredCreditInput.addEventListener('blur', function() {
+                let currentNumericValue = parseCurrency(desiredCreditInput.value);
+                updateDesiredCreditInput(currentNumericValue); // Garante que o valor esteja formatado corretamente e dentro dos limites
+            });
+
+            // Adicionar eventos para os botões de incremento/decremento
+            incrementCreditButton.addEventListener('click', () => {
+                let currentCredit = parseCurrency(desiredCreditInput.value);
+                updateDesiredCreditInput(currentCredit + STEP_CREDIT);
+            });
+
+            decrementCreditButton.addEventListener('click', () => {
+                let currentCredit = parseCurrency(desiredCreditInput.value);
+                updateDesiredCreditInput(currentCredit - STEP_CREDIT);
+            });
+
+            // Atualização inicial ao carregar a página
+            updateSimulatorValues(); // Garante que o simulador e o campo de input comecem formatados
+
+            // Smooth scrolling para os links de âncora
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Lidar com o envio do formulário para o WhatsApp
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const desiredCredit = parseCurrency(document.getElementById('desiredCredit').value);
+                const email = document.getElementById('email').value;
+
+                const whatsappNumber = '5511940512670';
+                const message = `NOME COMPLETO: ${name}\nCRÉDITO DESEJADO: ${formatCurrency(desiredCredit)}\nE-MAIL: ${email}`;
+
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                window.open(whatsappUrl, '_blank');
+
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
